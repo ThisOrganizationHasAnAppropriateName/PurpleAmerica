@@ -26,30 +26,31 @@ public class PoliticalMap {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        StdDraw.setCanvasSize(1278, 600);
-
-        File file = new File("C:\\Users\\hcps-faragms\\Google Drive\\MyClasses (15-16)\\Programming Hon\\MP4\\PracticeUSA\\src\\data\\USA.txt");
+        File file = new File("C:\\Users\\hcps-wangq\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\USA.txt");
         Scanner in = new Scanner(file);
 
         double xmin = in.nextDouble();
         double ymin = in.nextDouble();
         double xmax = in.nextDouble();
         double ymax = in.nextDouble();
-        double i = in.nextDouble();
-
-        StdDraw.setXscale(xmin, xmax);
-        StdDraw.setYscale(ymin, ymax);
+        int i = in.nextInt();
         
-        StdDraw.setPenRadius(.0012);
-        StdDraw.setPenColor(Color.RED);
+        StdDraw.setCanvasSize(Math.abs((int)((xmax - xmin) * 20 + 20)), (int)((ymax - ymin) * 20 + 20));
+
+        StdDraw.setXscale(xmin - ((xmax - xmin)/10), xmax + ((xmax - xmin)/10));
+        StdDraw.setYscale(ymin - ((ymax - ymin)/10), ymax + ((ymax - ymin)/10));
+        
+        StdDraw.setPenRadius(0);
 
         double[] polX;
         double[] polY;
-
+        
+        State[] s = new State[204];
+        
         for (int x = 0; x <= i*2; x++) {
-            String State = in.nextLine();
-            String Country = in.nextLine();
-            while (in.hasNextInt()) {
+            s[x].setName(in.nextLine()); //returns NullPointerException for some reason
+            in.nextLine();
+            while (in.hasNextDouble()) {
                 int iter = in.nextInt();
                 polX = new double[iter];
                 polY = new double[iter];
@@ -57,10 +58,14 @@ public class PoliticalMap {
                     polX[z] = in.nextDouble();
                     polY[z] = in.nextDouble();
                 }
+                s[x].setX(polX);
+                s[x].setY(polY);
                 StdDraw.polygon(polX, polY);
-                StdDraw.filledPolygon(polX, polY);
+         
             }
         }
+        
+        US us = new US(s);
 
     }
 }
