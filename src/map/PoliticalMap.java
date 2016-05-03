@@ -45,11 +45,11 @@ public class PoliticalMap {
         double[] polX;
         double[] polY;
         
-        State[] s = new State[10000];
+        State[] s = new State[10000];//needs to be procedural
         
         for (int x = 0; x <= i*2; x++) {
             System.out.println(x);
-            String name = in.nextLine(); //returns NullPointerException for some reason
+            String name = in.nextLine(); 
             in.nextLine();
             while (in.hasNextDouble()) {
                 int iter = in.nextInt();
