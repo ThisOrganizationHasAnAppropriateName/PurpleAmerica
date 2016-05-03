@@ -26,7 +26,7 @@ public class PoliticalMap {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        File file = new File("C:\\Users\\hcps-wangq\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\USA.txt");
+        File file = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA-county.txt");
         Scanner in = new Scanner(file);
 
         double xmin = in.nextDouble();
@@ -45,10 +45,11 @@ public class PoliticalMap {
         double[] polX;
         double[] polY;
         
-        State[] s = new State[204];
+        State[] s = new State[10000];
         
         for (int x = 0; x <= i*2; x++) {
-            s[x].setName(in.nextLine()); //returns NullPointerException for some reason
+            System.out.println(x);
+            String name = in.nextLine(); //returns NullPointerException for some reason
             in.nextLine();
             while (in.hasNextDouble()) {
                 int iter = in.nextInt();
@@ -58,8 +59,7 @@ public class PoliticalMap {
                     polX[z] = in.nextDouble();
                     polY[z] = in.nextDouble();
                 }
-                s[x].setX(polX);
-                s[x].setY(polY);
+                s[x] = new State(polX, polY, name);
                 StdDraw.polygon(polX, polY);
          
             }
