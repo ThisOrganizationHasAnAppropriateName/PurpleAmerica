@@ -26,7 +26,7 @@ public class PoliticalMap {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        File file = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA-county.txt");
+        File file = new File("C:\\Users\\hcps-wangq\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\USA-county.txt");
         Scanner in = new Scanner(file);
 
         double xmin = in.nextDouble();
@@ -49,7 +49,7 @@ public class PoliticalMap {
         
         for (int x = 0; x <= i*2; x++) {
             System.out.println(x);
-            String name = in.nextLine(); //returns NullPointerException for some reason
+            String name = in.nextLine();
             in.nextLine();
             while (in.hasNextDouble()) {
                 int iter = in.nextInt();
@@ -66,6 +66,26 @@ public class PoliticalMap {
         }
         
         US us = new US(s);
+        
+        File vFile = new File("C:\\Users\\hcps-wangq\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\USA2000.txt");
+        Scanner vIn = new Scanner(file);
+        
+        Votes[] v = new Votes[50];
 
+        for (int j = 0; j < 4; j++) {
+            vIn.next();
+        }
+        
+        String rCan = vIn.next();
+        String dCan = vIn.next();
+        String iCan = vIn.next();
+        
+        for (int j = 0; j < 50; j++) {
+            String state = vIn.next();
+            int rVotes = vIn.nextInt();
+            int dVotes = vIn.nextInt();
+            int iVotes = vIn.nextInt();
+            v[j] = new Votes(state, rVotes, dVotes, iVotes, rCan, dCan, iCan);
+        }
     }
 }

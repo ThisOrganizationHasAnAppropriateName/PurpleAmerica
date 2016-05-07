@@ -18,7 +18,7 @@ public class County {
         System.out.println(numberPoints);
         double[] xVals = new double[numberPoints];
         double[] yVals = new double[numberPoints];
-        for(int i = 0; i<numberPoints; i++){
+        for(int i = 0; i < numberPoints; i++){
             xVals[i] = scan.nextDouble();
             yVals[i] = scan.nextDouble();
         }
