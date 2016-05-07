@@ -17,6 +17,7 @@ import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.lang.Integer;
 
 /**
  *
@@ -46,7 +47,7 @@ public class PoliticalMap {
         double[] polY;
         
         State[] s = new State[10000];
-        
+        /*
         for (int x = 0; x <= i*2; x++) {
             System.out.println(x);
             String name = in.nextLine();
@@ -66,25 +67,32 @@ public class PoliticalMap {
         }
         
         US us = new US(s);
-        
+        */
         File vFile = new File("C:\\Users\\hcps-wangq\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\USA2000.txt");
-        Scanner vIn = new Scanner(file);
+        Scanner vIn = new Scanner(vFile);
         
         Votes[] v = new Votes[50];
 
-        for (int j = 0; j < 4; j++) {
-            vIn.next();
-        }
+        vIn.next();
+        vIn.next();
+        vIn.next();
         
-        String rCan = vIn.next();
-        String dCan = vIn.next();
-        String iCan = vIn.next();
+        String[] cans = vIn.next().split(",");
+        
+        String rCan = cans[1];
+        System.out.println(rCan);
+        String dCan = cans[2];
+        System.out.println(dCan);
+        String iCan = cans[3];
+        System.out.println(iCan);
         
         for (int j = 0; j < 50; j++) {
-            String state = vIn.next();
-            int rVotes = vIn.nextInt();
-            int dVotes = vIn.nextInt();
-            int iVotes = vIn.nextInt();
+            String[] votes = vIn.nextLine().split(",");
+            String state = votes[0];
+            System.out.println(state);
+            int rVotes = Integer.parseInt(votes[1]);
+            int dVotes = Integer.parseInt(votes[2]);
+            int iVotes = Integer.parseInt(votes[3]);
             v[j] = new Votes(state, rVotes, dVotes, iVotes, rCan, dCan, iCan);
         }
     }
