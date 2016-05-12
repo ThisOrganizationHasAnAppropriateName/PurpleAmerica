@@ -40,7 +40,7 @@ public class Vote {
         }
         
         for(int x = 0; x <= dist; x++){
-            System.out.println(in.nextInt());
+            System.out.println(in.nextInt());//Currently isn't working
         }
         
        
