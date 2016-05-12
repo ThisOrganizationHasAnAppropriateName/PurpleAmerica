@@ -13,6 +13,7 @@
 package map;
 
 import edu.princeton.cs.introcs.*;
+import static edu.princeton.cs.introcs.StdDraw.setPenColor;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -48,7 +49,7 @@ public class PoliticalMap {
         State[] s = new State[10000];//needs to be procedural
         
         for (int x = 0; x <= i*2; x++) {
-            System.out.println(x);
+            //System.out.println(x);
             String name = in.nextLine(); 
             in.nextLine();
             while (in.hasNextDouble()) {
@@ -59,7 +60,15 @@ public class PoliticalMap {
                     polX[z] = in.nextDouble();
                     polY[z] = in.nextDouble();
                 }
+                
                 s[x] = new State(polX, polY, name);
+                setPenColor(new Color(0,0,0));
+                StdDraw.polygon(polX, polY);
+                int color = (int)(255*Math.random());
+                System.out.println(color);
+                setPenColor(new Color(0,(255-color), color));
+                StdDraw.filledPolygon(polX, polY);
+                setPenColor(new Color(0,0,0));
                 StdDraw.polygon(polX, polY);
          
             }
