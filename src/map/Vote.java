@@ -39,7 +39,9 @@ public class Vote {
            }
         }
         
-        System.out.println(dist);
+        for(int x = 0; x <= dist; x++){
+            System.out.println(in.nextInt());
+        }
         
        
      }
