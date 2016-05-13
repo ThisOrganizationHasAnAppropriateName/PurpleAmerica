@@ -14,7 +14,7 @@ import java.util.Scanner;
  *
  * @author hcps-faragms
  */
-public class Vote {
+public class Vote{
     
     int elect1;
     int elect2;
@@ -29,20 +29,36 @@ public class Vote {
     
     public void getVotes() throws FileNotFoundException{
          
-        Scanner in = new Scanner(new File("C:\\Users\\hcps-faragms\\Google Drive\\MyClasses (15-16)\\Programming Hon\\MP4\\PracticeUSA\\src\\data\\AK2012.txt"));
+       File vFile = new File("C:\\Users\\hcps-faragms\\Google Drive\\MyClasses (15-16)\\Programming Hon\\MP4\\PracticeUSA\\src\\data\\USA2000.txt");
+        Scanner vIn = new Scanner(vFile);
         
-        int dist = 0;
-        while(in.hasNext()){
-           String nextWord = in.next();
-           if(nextWord.equalsIgnoreCase("District")){
-               dist++;
-           }
+        Votes[] v = new Votes[50];
+
+        vIn.next();
+        vIn.next();
+        vIn.next();
+        
+        String[] cans = vIn.next().split(",");
+        vIn.nextLine();
+        
+        String rCan = cans[1];
+        System.out.println(rCan);
+        String dCan = cans[2];
+        System.out.println(dCan);
+        String iCan = cans[3];
+        System.out.println(iCan);
+        
+        for (int j = 0; j <= 50; j++) {
+            String[] votes = vIn.nextLine().split(",");
+            String state = votes[0];
+            System.out.println(votes.length);
+            System.out.println(state);
+            System.out.println(votes[1]);
+            int rVotes = Integer.parseInt(votes[1]);
+            int dVotes = Integer.parseInt(votes[2]);
+            int iVotes = Integer.parseInt(votes[3]);
+            //v[j] = new Votes(state, rVotes, dVotes, iVotes, rCan, dCan, iCan);
         }
-        
-        for(int x = 0; x <= dist; x++){
-            System.out.println(in.nextInt());//Currently isn't working
-        }
-        
        
      }
      
