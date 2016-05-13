@@ -26,8 +26,8 @@ import java.lang.Integer;
 public class PoliticalMap {
 
     public static void main(String[] args) throws FileNotFoundException {
-
-        File file = new File("C:\\Users\\hcps-wangq\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\USA-county.txt");
+        
+        File file = new File("C:\\Users\\hcps-faragms\\Google Drive\\MyClasses (15-16)\\Programming Hon\\MP4\\PracticeUSA\\src\\data\\USA-county.txt");
         Scanner in = new Scanner(file);
 
         double xmin = in.nextDouble();
@@ -35,21 +35,22 @@ public class PoliticalMap {
         double xmax = in.nextDouble();
         double ymax = in.nextDouble();
         int i = in.nextInt();
-        
-        StdDraw.setCanvasSize(Math.abs((int)((xmax - xmin) * 20 + 20)), (int)((ymax - ymin) * 20 + 20));
 
-        StdDraw.setXscale(xmin - ((xmax - xmin)/10), xmax + ((xmax - xmin)/10));
-        StdDraw.setYscale(ymin - ((ymax - ymin)/10), ymax + ((ymax - ymin)/10));
-        
+        StdDraw.setCanvasSize(Math.abs((int) ((xmax - xmin) * 20 + 20)), (int) ((ymax - ymin) * 20 + 20));
+
+        StdDraw.setXscale(xmin - ((xmax - xmin) / 10), xmax + ((xmax - xmin) / 10));
+        StdDraw.setYscale(ymin - ((ymax - ymin) / 10), ymax + ((ymax - ymin) / 10));
+
         StdDraw.setPenRadius(0);
 
         double[] polX;
         double[] polY;
-        
+
+       
         State[] s = new State[10000];
-        /*
-        for (int x = 0; x <= i*2; x++) {
-            System.out.println(x);
+
+        for (int x = 0; x <= i * 2; x++) {
+            //System.out.println(x);
             String name = in.nextLine();
             in.nextLine();
             while (in.hasNextDouble()) {
@@ -61,39 +62,15 @@ public class PoliticalMap {
                     polY[z] = in.nextDouble();
                 }
                 s[x] = new State(polX, polY, name);
-                StdDraw.polygon(polX, polY);
-         
-            }
-        }
-        
-        US us = new US(s);
-        */
-        File vFile = new File("C:\\Users\\hcps-wangq\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\USA2000.txt");
-        Scanner vIn = new Scanner(vFile);
-        
-        Votes[] v = new Votes[50];
+               // StdDraw.polygon(polX, polY);
 
-        vIn.next();
-        vIn.next();
-        vIn.next();
+            }
+        } 
+
+        US us = new US(s);
         
-        String[] cans = vIn.next().split(",");
+        us.drawByState(2012);
         
-        String rCan = cans[1];
-        System.out.println(rCan);
-        String dCan = cans[2];
-        System.out.println(dCan);
-        String iCan = cans[3];
-        System.out.println(iCan);
-        
-        for (int j = 0; j < 50; j++) {
-            String[] votes = vIn.nextLine().split(",");
-            String state = votes[0];
-            System.out.println(state);
-            int rVotes = Integer.parseInt(votes[1]);
-            int dVotes = Integer.parseInt(votes[2]);
-            int iVotes = Integer.parseInt(votes[3]);
-            v[j] = new Votes(state, rVotes, dVotes, iVotes, rCan, dCan, iCan);
-        }
-    }
+    } 
+
 }

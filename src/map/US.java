@@ -101,9 +101,15 @@ public class US {
         
         State[] s = new State[10000];
         
+        int count = 0; //Counter represeting the states
         for (int x = 0; x <= i*2; x++) {
-            System.out.println(x);
-            String name = in.nextLine(); //returns NullPointerException for some reason
+            //System.out.println(x);
+            String name = in.nextLine();
+            String lastName = "";//returns NullPointerException for some reason
+            if(name != lastName){
+                lastName = name;
+                count++;
+            }
             in.nextLine();
             while (in.hasNextDouble()) {
                 int iter = in.nextInt();
@@ -115,8 +121,12 @@ public class US {
                 }
                 s[x] = new State(polX, polY, name);
                 StdDraw.polygon(polX, polY);
-                Color purple1 = new Color(12,132,120);
-                StdDraw.setPenColor(purple1);
+                Vote vote1 = new Vote();
+                vote1.getVotes();
+                System.out.println("County: "+count);
+                        
+                StdDraw.setPenColor(vote1.color(count-2));
+                //Changes the color of the pen depnding on the staets 
                 StdDraw.filledPolygon(polX, polY);
          
             }
