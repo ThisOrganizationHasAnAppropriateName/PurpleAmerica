@@ -102,16 +102,15 @@ public class US {
         double[] polY;
         
         State[] s = new State[10000];
-        
+
         int count = 0; //Counter representing the states
+        
+        String name = "";
+        
         for (int x = 0; x <= i*2; x++) {
             //System.out.println(x);
-            
-            String name = in.nextLine();
-            
-            if(x%2 == 0){
-                count++;
-            }
+
+            name = in.nextLine();
             
             in.nextLine();
             while (in.hasNextDouble()) {
@@ -122,18 +121,28 @@ public class US {
                     polX[z] = in.nextDouble();
                     polY[z] = in.nextDouble();
                 }
+                
                 s[x] = new State(polX, polY, name);
-                StdDraw.polygon(polX, polY);
                 Vote vote1 = new Vote();
+            
                 vote1.getVotes();
+                
+
+                if(x == 0){
+                    count++;
+                } else if (!name.equals(s[x - 1].getName())){
+                    count++;
+                }
+
                 System.out.println("County: " + count);
-                        
+                
                 StdDraw.setPenColor(vote1.color(count));
+                
                 //Changes the color of the pen depnding on the states 
                 StdDraw.filledPolygon(polX, polY);
-         
+                
             }
         }
-        US us = new US(s);
+
     }
 }
