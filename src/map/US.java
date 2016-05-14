@@ -17,7 +17,7 @@ import java.util.Scanner;
  */
 public class US {
     
-    String fileSet = "C:\\PA\\PurpleAmerica\\src\\data\\";
+    String fileSet = "C:\\Users\\hcps-wangq\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\";
     State[] states;
     
     public US(State[] s){
@@ -103,9 +103,16 @@ public class US {
         
         State[] s = new State[10000];
         
+        int count = 0; //Counter representing the states
         for (int x = 0; x <= i*2; x++) {
-            System.out.println(x);
-            String name = in.nextLine(); //returns NullPointerException for some reason
+            //System.out.println(x);
+            
+            String name = in.nextLine();
+            
+            if(x%2 == 0){
+                count++;
+            }
+            
             in.nextLine();
             while (in.hasNextDouble()) {
                 int iter = in.nextInt();
@@ -117,8 +124,12 @@ public class US {
                 }
                 s[x] = new State(polX, polY, name);
                 StdDraw.polygon(polX, polY);
-                Color purple1 = new Color(12,132,120);
-                StdDraw.setPenColor(purple1);
+                Vote vote1 = new Vote();
+                vote1.getVotes();
+                System.out.println("County: " + count);
+                        
+                StdDraw.setPenColor(vote1.color(count));
+                //Changes the color of the pen depnding on the states 
                 StdDraw.filledPolygon(polX, polY);
          
             }
