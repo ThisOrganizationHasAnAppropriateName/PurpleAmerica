@@ -29,7 +29,7 @@ public class PoliticalMap {
         
         String fileSet = "C:\\PA\\PurpleAmerica\\src\\data\\";
         
-        File file = new File(fileSet + "USA-county.txt");
+        File file = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA-county.txt");
         Scanner in = new Scanner(file);
 
         double xmin = in.nextDouble();
@@ -70,7 +70,7 @@ public class PoliticalMap {
         
         US us = new US(s);
         */
-        File vFile = new File(fileSet + "USA2000.txt");
+        File vFile = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA2000.txt");
         Scanner vIn = new Scanner(vFile);
         
         Votes[] v = new Votes[50];

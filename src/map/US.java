@@ -33,7 +33,7 @@ public class US {
     }
     public void drawByCounty(int year) throws FileNotFoundException{
         
-        File file = new File(fileSet + "USA-county.txt");
+        File file = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA-county.txt");
         Scanner in = new Scanner(file);
 
         double xmin = in.nextDouble();
@@ -82,7 +82,7 @@ public class US {
     
     public void drawByState(int year) throws FileNotFoundException{
         
-        File file = new File(fileSet + "USA.txt");
+        File file = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA.txt");
         Scanner in = new Scanner(file);
 
         double xmin = in.nextDouble();
