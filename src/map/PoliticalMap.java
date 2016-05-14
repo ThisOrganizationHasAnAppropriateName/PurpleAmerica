@@ -26,8 +26,10 @@ import java.lang.Integer;
 public class PoliticalMap {
 
     public static void main(String[] args) throws FileNotFoundException {
-
-        File file = new File("C:\\Users\\hcps-wangq\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\USA-county.txt");
+        
+        String fileSet = "C:\\PA\\PurpleAmerica\\src\\data\\";
+        
+        File file = new File(fileSet + "USA-county.txt");
         Scanner in = new Scanner(file);
 
         double xmin = in.nextDouble();
@@ -68,7 +70,7 @@ public class PoliticalMap {
         
         US us = new US(s);
         */
-        File vFile = new File("C:\\Users\\hcps-wangq\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\USA2000.txt");
+        File vFile = new File(fileSet + "USA2000.txt");
         Scanner vIn = new Scanner(vFile);
         
         Votes[] v = new Votes[50];
@@ -88,6 +90,9 @@ public class PoliticalMap {
         
         for (int j = 0; j < 50; j++) {
             String[] votes = vIn.nextLine().split(",");
+            for(int g = 0; g<4; g++){
+                System.out.println(votes[g]);
+            }
             String state = votes[0];
             System.out.println(state);
             int rVotes = Integer.parseInt(votes[1]);

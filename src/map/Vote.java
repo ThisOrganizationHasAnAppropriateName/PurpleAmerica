@@ -17,7 +17,7 @@ import java.util.Scanner;
  * @author hcps-faragms
  */
 public class Vote{
-    
+    String fileSet = "C:\\PA\\PurpleAmerica\\src\\data\\";
     int elect1;
     int elect2;
     int elect3;
@@ -35,7 +35,7 @@ public class Vote{
     
     public void getVotes() throws FileNotFoundException{
          
-       File vFile = new File("C:\\Users\\hcps-faragms\\Google Drive\\MyClasses (15-16)\\Programming Hon\\MP4\\PracticeUSA\\src\\data\\USA2000.txt");
+       File vFile = new File(fileSet + "USA2000.txt");
         Scanner vIn = new Scanner(vFile);
         
         Votes[] v = new Votes[51];

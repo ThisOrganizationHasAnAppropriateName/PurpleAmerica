@@ -16,6 +16,8 @@ import java.util.Scanner;
  * @author hcps-wangq
  */
 public class US {
+    
+    String fileSet = "C:\\PA\\PurpleAmerica\\src\\data\\";
     State[] states;
     
     public US(State[] s){
@@ -31,7 +33,7 @@ public class US {
     }
     public void drawByCounty(int year) throws FileNotFoundException{
         
-        File file = new File("C:\\Users\\hcps-faragms\\Google Drive\\MyClasses (15-16)\\Programming Hon\\MP4\\PracticeUSA\\src\\data\\USA-county.txt");
+        File file = new File(fileSet + "USA-county.txt");
         Scanner in = new Scanner(file);
 
         double xmin = in.nextDouble();
@@ -80,7 +82,7 @@ public class US {
     
     public void drawByState(int year) throws FileNotFoundException{
         
-        File file = new File("C:\\Users\\hcps-faragms\\Google Drive\\MyClasses (15-16)\\Programming Hon\\MP4\\PracticeUSA\\src\\data\\USA.txt");
+        File file = new File(fileSet + "USA.txt");
         Scanner in = new Scanner(file);
 
         double xmin = in.nextDouble();
