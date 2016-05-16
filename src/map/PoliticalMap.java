@@ -25,9 +25,9 @@ import java.lang.Integer;
  */
 public class PoliticalMap {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws Exception {
         
         US testing = new US();
-        testing.drawByState(2000);
+        testing.drawByCounty(2000);
     }
 }

@@ -19,7 +19,7 @@ public class Coloring{
     HashMap colors = new HashMap<String, Color>();
     
     
-    public Coloring(Scanner scan){
+    public void voteStates(Scanner scan){
         scan.nextLine();
         while(scan.hasNext()){
             String[] votes = scan.nextLine().split(",");
@@ -31,8 +31,10 @@ public class Coloring{
             int sum = iVotes+rVotes+dVotes;
             Color temp = new Color((255*rVotes)/sum, (255*iVotes)/sum, (255*dVotes)/sum);
             colors.put(name, temp);
+            //System.out.println(name+temp);
         }
     }
+    
     
     public Color getMapColor(String s){
         return (Color) colors.get(s);

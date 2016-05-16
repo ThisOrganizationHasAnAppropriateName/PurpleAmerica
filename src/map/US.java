@@ -9,6 +9,7 @@ import edu.princeton.cs.introcs.StdDraw;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -27,8 +28,7 @@ public class US {
     public void setState(){
         
     }
-    public void drawByCounty(int year) throws FileNotFoundException{
-        
+    public void drawByCounty(int year) throws Exception{
         File file = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA-county.txt");
         Scanner in = new Scanner(file);
 
@@ -45,37 +45,95 @@ public class US {
         
         StdDraw.setPenRadius(0);
 
-        double[] polX;
-        double[] polY;
+        in.nextLine();
         
-        State[] s = new State[10000];
         
-        for (int x = 0; x <= i*2; x++) {
-            System.out.println(x);
-            String name = in.nextLine(); //returns NullPointerException for some reason
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Coloring[] colors = new Coloring[51];
+        int counter = 1;
+        
+        String[] abbreevs = new String[51];
+        double[] polX = new double[10];
+        double[] polY = new double[10];
+        
+        String name = "";
+        String state = "";
+        String lastState = "";
+        StdDraw.setPenRadius(0.001);
+        //File vFile = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA" + year + ".txt");
+        //Scanner vIn = new Scanner(vFile);
+        //Coloring colors = new Coloring();
+        //colors.voteStates(vIn);
+        
+        while(in.hasNext()){
             in.nextLine();
-            while (in.hasNextDouble()) {
-                int iter = in.nextInt();
-                polX = new double[iter];
-                polY = new double[iter];
-                for (int z = 0; z < iter; z++) {
-                    polX[z] = in.nextDouble();
-                    polY[z] = in.nextDouble();
-                }
-                s[x] = new State(polX, polY, name);
-                StdDraw.polygon(polX, polY);
-                Color purple1 = new Color(12,132,120);
-                StdDraw.setPenColor(purple1);
-                StdDraw.filledPolygon(polX, polY);
-         
+            name = in.nextLine();
+            //System.out.println(name);
+            state = in.nextLine();
+            
+            int numberPoints = in.nextInt();
+            
+            if(state.compareTo(lastState) != 0){
+                
+                colors[counter] = new Coloring();
+                File fileState = new File("C:\\PA\\PurpleAmerica\\src\\data\\"+state + year +".txt");
+                Scanner scanState = new Scanner(fileState);
+                colors[counter].voteStates(scanState);
+                lastState = state;
+                counter++;
+                //System.out.println(state);
+                
+                
             }
+            
+            polX = new double[numberPoints];
+            polY = new double[numberPoints];
+            
+            int c = 0;
+            while (in.hasNextDouble()) {
+                polX[c] = in.nextDouble();
+                polY[c] = in.nextDouble();
+                c++;
+            }
+            try{
+                if(state.compareTo("LA") == 0){
+                    StdDraw.setPenColor(colors[counter-1].getMapColor(name.replace(" Parish", "")));
+                }
+                else{
+                    StdDraw.setPenColor(colors[counter-1].getMapColor(name));
+                }
+            }
+            catch(Exception e){
+                try{
+                    StdDraw.setPenColor(colors[counter-1].getMapColor(name.replace(" city", "")));
+                }
+                catch(Exception x){
+                   StdDraw.setPenColor(0,0,0);
+                   System.out.println(name); 
+                }
+                
+            }
+            
+            //System.out.println(name);
+            StdDraw.filledPolygon(polX, polY);
+            in.nextLine();
         }
         
 
     
     }
     
-    public void drawByState(int year) throws FileNotFoundException{
+    public void drawByState(int year) throws Exception{
         
         File file = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA.txt");
         Scanner in = new Scanner(file);
@@ -99,27 +157,11 @@ public class US {
         State[] s = new State[10000];
         
         StdDraw.setPenRadius(0.002);
-        File vFile = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA2000.txt");
+        File vFile = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA" + year + ".txt");
         Scanner vIn = new Scanner(vFile);
-        Coloring colors = new Coloring(vIn);
+        Coloring colors = new Coloring();
+        colors.voteStates(vIn);
                 
-
-        //vIn.next();
-        //vIn.next();
-        //vIn.next();
-        
-        //String[] cans = vIn.next().split(",");
-        
-        //vIn.nextLine();
-        
-        //String rCan = cans[1];
-        //System.out.println(rCan);
-        //String dCan = cans[2];
-        //System.out.println(dCan);
-        //String iCan = cans[3];
-        //System.out.println(iCan);
-        String lastName = "";
-        //vIn.nextLine();
         for (int x = 0; x <= 208; x++) {
             
             String name = in.nextLine();
@@ -133,17 +175,17 @@ public class US {
                 for (int z = 0; z < iter; z++) {
                     polX[z] = in.nextDouble();
                     polY[z] = in.nextDouble();
-                
                 }
-                //s[x] = new State(polX, polY, name);
-                //StdDraw.polygon(polX, polY);
                 System.out.println(name);
                     
                     
-                    
+                try{   
                     StdDraw.setPenColor(colors.getMapColor(name));
-                    
-                    System.out.println(name);
+                }
+                catch(Exception e){
+                    StdDraw.setPenColor(new Color(0,0,0));
+                }
+                System.out.println(name);
                     
                 
                 StdDraw.filledPolygon(polX, polY);
