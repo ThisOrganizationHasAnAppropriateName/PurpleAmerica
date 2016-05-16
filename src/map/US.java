@@ -17,16 +17,12 @@ import java.util.Scanner;
  */
 public class US {
     
-    String fileSet = "C:\\PA\\PurpleAmerica\\src\\data\\";
-    State[] states;
     
-    public US(State[] s){
-        states = s;
+    public US(){
+
     }
     
-    public State[] getState(){
-        return states;
-    }
+    
     
     public void setState(){
         
@@ -75,7 +71,6 @@ public class US {
             }
         }
         
-        US us = new US(s);
 
     
     }
@@ -98,15 +93,40 @@ public class US {
         
         StdDraw.setPenRadius(0);
 
-        double[] polX;
-        double[] polY;
+        double[] polX = new double[10];
+        double[] polY = new double[10];
         
         State[] s = new State[10000];
         
-        for (int x = 0; x <= i*2; x++) {
-            System.out.println(x);
-            String name = in.nextLine(); //returns NullPointerException for some reason
+        
+        File vFile = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA2000.txt");
+        Scanner vIn = new Scanner(vFile);
+        
+                
+
+        vIn.next();
+        vIn.next();
+        vIn.next();
+        
+        String[] cans = vIn.next().split(",");
+        
+        vIn.nextLine();
+        
+        String rCan = cans[1];
+        System.out.println(rCan);
+        String dCan = cans[2];
+        System.out.println(dCan);
+        String iCan = cans[3];
+        System.out.println(iCan);
+        String lastName = "";
+        for (int x = 0; x <= 208; x++) {
+            
+            String name = in.nextLine();
+            if(x == 0){
+                lastName = name;
+            }
             in.nextLine();
+            
             while (in.hasNextDouble()) {
                 int iter = in.nextInt();
                 polX = new double[iter];
@@ -114,15 +134,33 @@ public class US {
                 for (int z = 0; z < iter; z++) {
                     polX[z] = in.nextDouble();
                     polY[z] = in.nextDouble();
+                
                 }
-                s[x] = new State(polX, polY, name);
-                StdDraw.polygon(polX, polY);
-                Color purple1 = new Color(12,132,120);
-                StdDraw.setPenColor(purple1);
+                //s[x] = new State(polX, polY, name);
+                //StdDraw.polygon(polX, polY);
+                
+                if(name.compareTo(lastName) != 0){
+                    lastName = name;
+                    //System.out.println(x);
+                    String[] votes = vIn.nextLine().split(",");
+                    String state = votes[0];
+                    
+                    int rVotes = Integer.parseInt(votes[1]);
+                    int dVotes = Integer.parseInt(votes[2]);
+                    int iVotes = Integer.parseInt(votes[3]);
+                    int sum = (Integer.parseInt(votes[1])+Integer.parseInt(votes[2])+Integer.parseInt(votes[3]));
+                    Color purple = new Color(((255*rVotes) / sum),((255*iVotes)/sum),((255*dVotes)/sum));
+                    StdDraw.setPenColor(purple);
+                    System.out.println("changedColor");
+                }
+                
+                
                 StdDraw.filledPolygon(polX, polY);
-         
+                System.out.println(name);
             }
+            //in.nextLine();
+            
         }
-        US us = new US(s);
+
     }
 }

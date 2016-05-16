@@ -35,7 +35,7 @@ public class Vote{
     
     public void getVotes() throws FileNotFoundException{
          
-       File vFile = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA2000.txt");
+        File vFile = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA2000.txt");
         Scanner vIn = new Scanner(vFile);
         
         Votes[] v = new Votes[51];
