@@ -49,27 +49,7 @@ public class PoliticalMap {
         double[] polY;
         
         State[] s = new State[10000];
-        /*
-        for (int x = 0; x <= i*2; x++) {
-            System.out.println(x);
-            String name = in.nextLine();
-            in.nextLine();
-            while (in.hasNextDouble()) {
-                int iter = in.nextInt();
-                polX = new double[iter];
-                polY = new double[iter];
-                for (int z = 0; z < iter; z++) {
-                    polX[z] = in.nextDouble();
-                    polY[z] = in.nextDouble();
-                }
-                s[x] = new State(polX, polY, name);
-                StdDraw.polygon(polX, polY);
-         
-            }
-        }
         
-        US us = new US(s);
-        */
         File vFile = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA2000.txt");
         Scanner vIn = new Scanner(vFile);
         
@@ -80,6 +60,8 @@ public class PoliticalMap {
         vIn.next();
         
         String[] cans = vIn.next().split(",");
+        
+        vIn.nextLine();
         
         String rCan = cans[1];
         System.out.println(rCan);
