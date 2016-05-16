@@ -28,31 +28,4 @@ public class Votes {
         iCan = iC;
     }
     
-    public String getState(){
-        return state;
-    }
-    
-    public int getRVotes(){
-        return rVotes;
-    }
-        
-    public int getDVotes(){
-        return dVotes;
-    }
-            
-    public int getIVotes(){
-        return iVotes;
-    }
-    
-    public String getRCan(){
-        return rCan;
-    }
-    
-    public String getdCan(){
-        return dCan;
-    }
-    
-    public String getICan(){
-        return iCan;
-    }
 }

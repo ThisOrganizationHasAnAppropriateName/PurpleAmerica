@@ -17,7 +17,7 @@ import java.util.Scanner;
  * @author hcps-faragms
  */
 public class Vote{
-    String fileSet = "C:\\Users\\hcps-wangq\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\";
+    String fileSet = "C:\\PA\\PurpleAmerica\\src\\data\\";
     int elect1;
     int elect2;
     int elect3;
@@ -35,7 +35,7 @@ public class Vote{
     
     public void getVotes() throws FileNotFoundException{
          
-       File vFile = new File(fileSet + "USA2000.txt");
+        File vFile = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA2000.txt");
         Scanner vIn = new Scanner(vFile);
         
         Votes[] v = new Votes[51];
@@ -48,15 +48,19 @@ public class Vote{
         vIn.nextLine();
         
         String rCan = cans[1];
+        System.out.println(rCan);
         String dCan = cans[2];
+        System.out.println(dCan);
         String iCan = cans[3];
+        System.out.println(iCan);
       
         
         for (int j = 0; j <= 50; j++) {
             String[] votes = vIn.nextLine().split(",");
             String state = votes[0];
-
-            //System.out.println(state);
+           // System.out.println(votes.length);
+            System.out.println(state);
+           // System.out.println(votes[1]);
             rVotes[j] = Integer.parseInt(votes[1]);
             dVotes[j] = Integer.parseInt(votes[2]);
             iVotes[j] = Integer.parseInt(votes[3]);
@@ -71,12 +75,12 @@ public class Vote{
         elect1 = rVotes[x];
         elect2 = dVotes[x];
         elect3 = iVotes[x];
-        //System.out.println(elect1);
-        //System.out.println(Arrays.toString(sum));
+        System.out.println(elect1);
+        System.out.println(Arrays.toString(sum));
         int sum1 = sum[x];
         
         
-        Color purple = new Color(((255*elect1) / sum1),((255*elect3)/sum1),((255*elect2)/sum1));
+        Color purple = new Color(((255*elect1) / sum1),((255*elect2)/sum1),((255*elect3)/sum1));
         
       
         return purple;
