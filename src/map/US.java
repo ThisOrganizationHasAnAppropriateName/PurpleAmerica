@@ -151,12 +151,12 @@ public class US {
                     int sum = (Integer.parseInt(votes[1])+Integer.parseInt(votes[2])+Integer.parseInt(votes[3]));
                     Color purple = new Color(((255*rVotes) / sum),((255*iVotes)/sum),((255*dVotes)/sum));
                     StdDraw.setPenColor(purple);
-                    System.out.println("changedColor");
+                    System.out.println(state);
+                    System.out.println(purple);
                 }
                 
                 
                 StdDraw.filledPolygon(polX, polY);
-                System.out.println(name);
             }
             //in.nextLine();
             
