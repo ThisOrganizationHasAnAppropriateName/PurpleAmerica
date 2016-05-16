@@ -98,33 +98,32 @@ public class US {
         
         State[] s = new State[10000];
         
-        
+        StdDraw.setPenRadius(0.002);
         File vFile = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA2000.txt");
         Scanner vIn = new Scanner(vFile);
-        
+        Coloring colors = new Coloring(vIn);
                 
 
-        vIn.next();
-        vIn.next();
-        vIn.next();
+        //vIn.next();
+        //vIn.next();
+        //vIn.next();
         
-        String[] cans = vIn.next().split(",");
+        //String[] cans = vIn.next().split(",");
         
-        vIn.nextLine();
+        //vIn.nextLine();
         
-        String rCan = cans[1];
-        System.out.println(rCan);
-        String dCan = cans[2];
-        System.out.println(dCan);
-        String iCan = cans[3];
-        System.out.println(iCan);
+        //String rCan = cans[1];
+        //System.out.println(rCan);
+        //String dCan = cans[2];
+        //System.out.println(dCan);
+        //String iCan = cans[3];
+        //System.out.println(iCan);
         String lastName = "";
+        //vIn.nextLine();
         for (int x = 0; x <= 208; x++) {
             
             String name = in.nextLine();
-            if(x == 0){
-                lastName = name;
-            }
+            
             in.nextLine();
             
             while (in.hasNextDouble()) {
@@ -138,25 +137,20 @@ public class US {
                 }
                 //s[x] = new State(polX, polY, name);
                 //StdDraw.polygon(polX, polY);
-                
-                if(name.compareTo(lastName) != 0){
-                    lastName = name;
-                    //System.out.println(x);
-                    String[] votes = vIn.nextLine().split(",");
-                    String state = votes[0];
+                System.out.println(name);
                     
-                    int rVotes = Integer.parseInt(votes[1]);
-                    int dVotes = Integer.parseInt(votes[2]);
-                    int iVotes = Integer.parseInt(votes[3]);
-                    int sum = (Integer.parseInt(votes[1])+Integer.parseInt(votes[2])+Integer.parseInt(votes[3]));
-                    Color purple = new Color(((255*rVotes) / sum),((255*iVotes)/sum),((255*dVotes)/sum));
-                    StdDraw.setPenColor(purple);
-                    System.out.println(state);
-                    System.out.println(purple);
-                }
-                
+                    
+                    
+                    StdDraw.setPenColor(colors.getMapColor(name));
+                    
+                    System.out.println(name);
+                    
                 
                 StdDraw.filledPolygon(polX, polY);
+                StdDraw.setPenColor(0, 0, 0);
+                StdDraw.polygon(polX, polY);
+                
+                
             }
             //in.nextLine();
             
