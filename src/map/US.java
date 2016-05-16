@@ -119,7 +119,7 @@ public class US {
                 }
                 catch(Exception x){
                    StdDraw.setPenColor(0,0,0);
-                   System.out.println(name); 
+                   System.out.println(name + ", " + state ); 
                 }
                 
             }
