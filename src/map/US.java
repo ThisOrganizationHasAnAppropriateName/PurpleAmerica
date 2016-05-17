@@ -8,8 +8,6 @@ package map;
 import edu.princeton.cs.introcs.StdDraw;
 import java.awt.Color;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -29,8 +27,11 @@ public class US {
         
     }
     public void drawByCounty(int year) throws Exception{
-        File file = new File("C:\\Users\\hcps-wangq\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\USA-county.txt");
+        File file = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA-county.txt");
         Scanner in = new Scanner(file);
+        
+        File outLines = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA.txt");
+        Scanner outLine = new Scanner(outLines);
 
         double xmin = in.nextDouble();
         double ymin = in.nextDouble();
@@ -43,22 +44,14 @@ public class US {
         StdDraw.setXscale(xmin - ((xmax - xmin)/10), xmax + ((xmax - xmin)/10));
         StdDraw.setYscale(ymin - ((ymax - ymin)/10), ymax + ((ymax - ymin)/10));
         
+        //StdDraw.setXscale(xmin, xmax);
+        //StdDraw.setYscale(ymin, ymax);
+        
+        
         StdDraw.setPenRadius(0);
 
         in.nextLine();
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         Coloring[] colors = new Coloring[51];
         int counter = 1;
         
@@ -70,11 +63,7 @@ public class US {
         String state = "";
         String lastState = "";
         StdDraw.setPenRadius(0.001);
-        //File vFile = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA" + year + ".txt");
-        //Scanner vIn = new Scanner(vFile);
-        //Coloring colors = new Coloring();
-        //colors.voteStates(vIn);
-        
+
         while(in.hasNext()){
             in.nextLine();
             name = in.nextLine();
@@ -86,16 +75,12 @@ public class US {
             if(state.compareTo(lastState) != 0){
                 
                 colors[counter] = new Coloring();
-                File fileState = new File("C:\\Users\\hcps-wangq\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\"+state + year +".txt");
+                File fileState = new File("C:\\PA\\PurpleAmerica\\src\\data\\"+state + year +".txt");
                 Scanner scanState = new Scanner(fileState);
                 colors[counter].voteStates(scanState);
                 lastState = state;
-                counter++;
-                //System.out.println(state);
-                
-                
+                counter++;    
             }
-            
             polX = new double[numberPoints];
             polY = new double[numberPoints];
             
@@ -120,22 +105,17 @@ public class US {
                 catch(Exception x){
                    StdDraw.setPenColor(0,0,0);
                    System.out.println(name + ", " + state ); 
-                }
-                
+                }  
             }
-            
-            //System.out.println(name);
             StdDraw.filledPolygon(polX, polY);
             in.nextLine();
         }
-        
-
-    
+        drawByStateBlank();
     }
     
     public void drawByState(int year) throws Exception{
         
-        File file = new File("C:\\Users\\hcps-wangq\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\USA.txt");
+        File file = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA.txt");
         Scanner in = new Scanner(file);
 
         double xmin = in.nextDouble();
@@ -157,7 +137,7 @@ public class US {
         State[] s = new State[10000];
         
         StdDraw.setPenRadius(0.002);
-        File vFile = new File("C:\\Users\\hcps-wangq\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\USA" + year + ".txt");
+        File vFile = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA" + year + ".txt");
         Scanner vIn = new Scanner(vFile);
         Coloring colors = new Coloring();
         colors.voteStates(vIn);
@@ -176,7 +156,7 @@ public class US {
                     polX[z] = in.nextDouble();
                     polY[z] = in.nextDouble();
                 }
-                System.out.println(name);
+                
                     
                     
                 try{   
@@ -185,7 +165,7 @@ public class US {
                 catch(Exception e){
                     StdDraw.setPenColor(new Color(0,0,0));
                 }
-                System.out.println(name);
+                
                     
                 
                 StdDraw.filledPolygon(polX, polY);
@@ -198,5 +178,44 @@ public class US {
             
         }
 
+    }
+    public void drawByStateBlank() throws Exception{
+        
+        File file = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA.txt");
+        Scanner in = new Scanner(file);
+
+        double xmin = in.nextDouble();
+        double ymin = in.nextDouble();
+        double xmax = in.nextDouble();
+        double ymax = in.nextDouble();
+        int i = in.nextInt();
+
+        double[] polX = new double[10];
+        double[] polY = new double[10];
+        
+        StdDraw.setPenRadius(0.003);
+                
+        for (int x = 0; x <= 208; x++) {
+            
+            String name = in.nextLine();
+            
+            in.nextLine();
+            
+            while (in.hasNextDouble()) {
+                int iter = in.nextInt();
+                polX = new double[iter];
+                polY = new double[iter];
+                for (int z = 0; z < iter; z++) {
+                    polX[z] = in.nextDouble();
+                    polY[z] = in.nextDouble();
+                }
+              
+                StdDraw.setPenColor(new Color(0,0,0));
+                    
+                StdDraw.polygon(polX, polY);
+                
+                
+            }
+        }
     }
 }
