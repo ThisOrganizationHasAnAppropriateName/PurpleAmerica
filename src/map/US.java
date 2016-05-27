@@ -18,25 +18,17 @@ import java.util.Scanner;
  * @author hcps-wangq
  */
 public class US {
-    Coloring[] colors = new Coloring[51];
-    HashMap[] pointsX;
-    HashMap[] pointsY;
-    int year;
-    
+    Coloring[] colors = new Coloring[51];//stores colors
+
     public US(){
 
-    }
+    }//blank constructor
     
-    
-    
-    public void setState(){
-        
-    }
     public void drawByCounty(int year) throws Exception{
-        File file = new File("C:\\Users\\hcps-faragms\\Documents\\NetBeansProjects\\PurpleAmericaFinal\\src\\data\\USA-county.txt");
+        File file = new File("src\\data\\USA-county.txt");
         Scanner in = new Scanner(file);
         
-        File outLines = new File("C:\\Users\\hcps-faragms\\Documents\\NetBeansProjects\\PurpleAmericaFinal\\src\\data\\USA.txt");
+        File outLines = new File("src\\data\\USA.txt");
         Scanner outLine = new Scanner(outLines);
 
         double xmin = in.nextDouble();
@@ -81,7 +73,7 @@ public class US {
             if(state.compareTo(lastState) != 0){
                 
                 colors[counter] = new Coloring();
-                File fileState = new File("C:\\Users\\hcps-faragms\\Documents\\NetBeansProjects\\PurpleAmericaFinal\\src\\data\\"+state + year +".txt");
+                File fileState = new File("src\\data\\"+state + year +".txt");
                 Scanner scanState = new Scanner(fileState);
                 colors[counter].voteStates(scanState);
                 lastState = state;
@@ -121,7 +113,7 @@ public class US {
     
     public void drawByState(int year) throws Exception{
         
-        File file = new File("C:\\Users\\hcps-faragms\\Documents\\NetBeansProjects\\PurpleAmericaFinal\\src\\data\\USA.txt");
+        File file = new File("src\\data\\USA.txt");
         Scanner in = new Scanner(file);
 
         double xmin = in.nextDouble();
@@ -142,7 +134,7 @@ public class US {
         
         
         StdDraw.setPenRadius(0.002);
-        File vFile = new File("C:\\Users\\hcps-faragms\\Documents\\NetBeansProjects\\PurpleAmericaFinal\\src\\data\\USA" + year + ".txt");
+        File vFile = new File("src\\data\\USA" + year + ".txt");
         Scanner vIn = new Scanner(vFile);
         Coloring colors = new Coloring();
         colors.voteStates(vIn);
@@ -186,7 +178,7 @@ public class US {
     }
     public void drawByStateBlank() throws Exception{
         
-        File file = new File("C:\\Users\\hcps-faragms\\Documents\\NetBeansProjects\\PurpleAmericaFinal\\src\\data\\USA.txt");
+        File file = new File("src\\data\\USA.txt");
         Scanner in = new Scanner(file);
 
         double xmin = in.nextDouble();
@@ -225,7 +217,7 @@ public class US {
     }
     public void drawOneState(String state, int year)throws Exception{
         
-        File file = new File("C:\\Users\\hcps-faragms\\Documents\\NetBeansProjects\\PurpleAmericaFinal\\src\\data\\" + state + ".txt");
+        File file = new File("src\\data\\" + state + ".txt");
         Scanner in = new Scanner(file);
         int size = 4;
 
@@ -242,7 +234,7 @@ public class US {
 
         
         StdDraw.setPenRadius(0.002);
-        File vFile = new File("C:\\Users\\hcps-faragms\\Documents\\NetBeansProjects\\PurpleAmericaFinal\\src\\data\\" + state + year + ".txt");
+        File vFile = new File("src\\data\\" + state + year + ".txt");
         System.out.println(vFile);
         Scanner vIn = new Scanner(vFile);
         
