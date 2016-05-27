@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Your Name
+The Name of the Class
+A description of all class variables that explains the variable’s purpose and how it is used
+a brief description of any methods in the class.
+
  */
 package map;
 
@@ -31,10 +33,10 @@ public class US {
         
     }
     public void drawByCounty(int year) throws Exception{
-        File file = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA-county.txt");
+        File file = new File("C:\\Users\\hcps-faragms\\Documents\\NetBeansProjects\\PurpleAmericaFinal\\src\\data\\USA-county.txt");
         Scanner in = new Scanner(file);
         
-        File outLines = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA.txt");
+        File outLines = new File("C:\\Users\\hcps-faragms\\Documents\\NetBeansProjects\\PurpleAmericaFinal\\src\\data\\USA.txt");
         Scanner outLine = new Scanner(outLines);
 
         double xmin = in.nextDouble();
@@ -79,7 +81,7 @@ public class US {
             if(state.compareTo(lastState) != 0){
                 
                 colors[counter] = new Coloring();
-                File fileState = new File("C:\\PA\\PurpleAmerica\\src\\data\\"+state + year +".txt");
+                File fileState = new File("C:\\Users\\hcps-faragms\\Documents\\NetBeansProjects\\PurpleAmericaFinal\\src\\data\\"+state + year +".txt");
                 Scanner scanState = new Scanner(fileState);
                 colors[counter].voteStates(scanState);
                 lastState = state;
@@ -119,7 +121,7 @@ public class US {
     
     public void drawByState(int year) throws Exception{
         
-        File file = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA.txt");
+        File file = new File("C:\\Users\\hcps-faragms\\Documents\\NetBeansProjects\\PurpleAmericaFinal\\src\\data\\USA.txt");
         Scanner in = new Scanner(file);
 
         double xmin = in.nextDouble();
@@ -138,10 +140,9 @@ public class US {
         double[] polX = new double[10];
         double[] polY = new double[10];
         
-        State[] s = new State[10000];
         
         StdDraw.setPenRadius(0.002);
-        File vFile = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA" + year + ".txt");
+        File vFile = new File("C:\\Users\\hcps-faragms\\Documents\\NetBeansProjects\\PurpleAmericaFinal\\src\\data\\USA" + year + ".txt");
         Scanner vIn = new Scanner(vFile);
         Coloring colors = new Coloring();
         colors.voteStates(vIn);
@@ -185,7 +186,7 @@ public class US {
     }
     public void drawByStateBlank() throws Exception{
         
-        File file = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA.txt");
+        File file = new File("C:\\Users\\hcps-faragms\\Documents\\NetBeansProjects\\PurpleAmericaFinal\\src\\data\\USA.txt");
         Scanner in = new Scanner(file);
 
         double xmin = in.nextDouble();
@@ -224,7 +225,7 @@ public class US {
     }
     public void drawOneState(String state, int year)throws Exception{
         
-        File file = new File("C:\\PA\\PurpleAmerica\\src\\data\\" + state + ".txt");
+        File file = new File("C:\\Users\\hcps-faragms\\Documents\\NetBeansProjects\\PurpleAmericaFinal\\src\\data\\" + state + ".txt");
         Scanner in = new Scanner(file);
         int size = 4;
 
@@ -241,7 +242,7 @@ public class US {
 
         
         StdDraw.setPenRadius(0.002);
-        File vFile = new File("C:\\PA\\PurpleAmerica\\src\\data\\" + state + year + ".txt");
+        File vFile = new File("C:\\Users\\hcps-faragms\\Documents\\NetBeansProjects\\PurpleAmericaFinal\\src\\data\\" + state + year + ".txt");
         System.out.println(vFile);
         Scanner vIn = new Scanner(vFile);
         
@@ -280,7 +281,6 @@ public class US {
                 
                 
             }
-            //in.nextLine();
             
         }
        

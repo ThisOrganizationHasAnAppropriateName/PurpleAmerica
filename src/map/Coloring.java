@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ Your Name
+The Name of the Class
+A description of all class variables that explains the variable’s purpose and how it is used
+a brief description of any methods in the class.
+
  */
 package map;
 
