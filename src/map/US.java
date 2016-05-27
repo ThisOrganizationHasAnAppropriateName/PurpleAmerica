@@ -226,12 +226,13 @@ public class US {
         
         File file = new File("C:\\PA\\PurpleAmerica\\src\\data\\" + state + ".txt");
         Scanner in = new Scanner(file);
+        int size = 4;
 
 
-        double xmin = in.nextDouble();
-        double ymin = in.nextDouble();
-        double xmax = in.nextDouble();
-        double ymax = in.nextDouble();
+        double xmin = size*in.nextDouble();
+        double ymin = size*in.nextDouble();
+        double xmax = size*in.nextDouble();
+        double ymax = size*in.nextDouble();
         int i = in.nextInt();
         StdDraw.setCanvasSize(Math.abs((int)((xmax - xmin) * 20 + 20)), (int)((ymax - ymin) * 20 + 20));
 
@@ -259,8 +260,8 @@ public class US {
                 double[] polX = new double[iter];
                 double[] polY = new double[iter];
                 for (int z = 0; z < iter; z++) {
-                    polX[z] = in.nextDouble();
-                    polY[z] = in.nextDouble();
+                    polX[z] = size*in.nextDouble();
+                    polY[z] = size*in.nextDouble();
                 }
     
                 try{   
