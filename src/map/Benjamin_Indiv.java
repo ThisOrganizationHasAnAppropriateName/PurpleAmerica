@@ -102,13 +102,13 @@ public class Benjamin_Indiv extends javax.swing.JFrame {
     }//GEN-LAST:event_yearStateChanged
 
     private void yearMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_yearMouseReleased
-        YearLabel.setText("Year: " + year.getValue());
+        YearLabel.setText("Year: " + year.getValue());//sets the label to the year that is currently
         try{
-            US testing = new US();
-            testing.drawByCounty(year.getValue());
+            US testing = new US();//makes a  new US object to draw stuff
+            testing.drawByCounty(year.getValue());//gets the value of slider to use in drawing
         }
         catch(Exception e){
-            System.out.println(year.getValue());
+            System.out.println(year.getValue());//prints out the years that caused an error
         }
         
     }//GEN-LAST:event_yearMouseReleased
