@@ -65,6 +65,7 @@ public class mapInterface extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         county = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
+        startBenjamin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 255, 102));
@@ -147,6 +148,13 @@ public class mapInterface extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Select a specific map");
 
+        startBenjamin.setText("Slider Map View");
+        startBenjamin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startBenjaminActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -193,6 +201,8 @@ public class mapInterface extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addComponent(jButton1)
+                .addGap(158, 158, 158)
+                .addComponent(startBenjamin)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -203,9 +213,9 @@ public class mapInterface extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jRadioButton1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButton1)
+                            .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -228,7 +238,9 @@ public class mapInterface extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(gen, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(startBenjamin))
                 .addGap(30, 30, 30))
         );
 
@@ -249,14 +261,22 @@ public class mapInterface extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(mapInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
-       }
+        }
         if(county.isSelected()){
             try {
                 testing.drawByCounty(Integer.parseInt((String) year.getSelectedItem()));
             } catch (Exception ex) {
                 Logger.getLogger(mapInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
-       }
+        }
+        if(jRadioButton1.isSelected()){
+            try{
+                testing.drawOneState((String)jComboBox2.getSelectedItem());
+            }
+            catch(Exception e){
+                
+            }
+        }
     }//GEN-LAST:event_genActionPerformed
 
     private void yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearActionPerformed
@@ -278,6 +298,12 @@ public class mapInterface extends javax.swing.JFrame {
     private void countyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countyActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_countyActionPerformed
+
+    private void startBenjaminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startBenjaminActionPerformed
+        Benjamin_Indiv tester = new Benjamin_Indiv();
+        String[] args = null;
+        Benjamin_Indiv.main(args);
+    }//GEN-LAST:event_startBenjaminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -327,6 +353,7 @@ public class mapInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JButton startBenjamin;
     private javax.swing.JRadioButton state;
     private javax.swing.JComboBox year;
     // End of variables declaration//GEN-END:variables

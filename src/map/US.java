@@ -8,6 +8,7 @@ package map;
 import edu.princeton.cs.introcs.StdDraw;
 import java.awt.Color;
 import java.io.File;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -15,7 +16,10 @@ import java.util.Scanner;
  * @author hcps-wangq
  */
 public class US {
-    
+    Coloring[] colors = new Coloring[51];
+    HashMap[] pointsX;
+    HashMap[] pointsY;
+    int year;
     
     public US(){
 
@@ -218,4 +222,65 @@ public class US {
             }
         }
     }
+    public void drawOneState(String state)throws Exception{
+        File file = new File("C:\\PA\\PurpleAmerica\\src\\data\\" + state + ".txt");
+        Scanner in = new Scanner(file);
+
+        double xmin = in.nextDouble();
+        double ymin = in.nextDouble();
+        double xmax = in.nextDouble();
+        double ymax = in.nextDouble();
+        int i = in.nextInt();
+        
+        StdDraw.setCanvasSize(Math.abs((int)((xmax - xmin) * 20 + 20)), (int)((ymax - ymin) * 20 + 20));
+
+        StdDraw.setXscale(xmin - ((xmax - xmin)/10), xmax + ((xmax - xmin)/10));
+        StdDraw.setYscale(ymin - ((ymax - ymin)/10), ymax + ((ymax - ymin)/10));
+        
+        
+        StdDraw.setPenRadius(0.002);
+        File vFile = new File("C:\\PA\\PurpleAmerica\\src\\data\\" + state + year + ".txt");
+        Scanner vIn = new Scanner(vFile);
+        Coloring colors = new Coloring();
+        colors.voteStates(vIn);
+        
+        
+        for (int x = 0; x <= 208; x++) {
+            
+            String name = in.nextLine();
+            
+            in.nextLine();
+            
+            while (in.hasNextDouble()) {
+                int iter = in.nextInt();
+                double[] polX = new double[iter];
+                double[] polY = new double[iter];
+                for (int z = 0; z < iter; z++) {
+                    polX[z] = in.nextDouble();
+                    polY[z] = in.nextDouble();
+                }
+    
+                try{   
+                    StdDraw.setPenColor(colors.getMapColor(name));
+                }
+                catch(Exception e){
+                    StdDraw.setPenColor(new Color(0,0,0));
+                    
+                }
+                
+                    
+                
+                StdDraw.filledPolygon(polX, polY);
+                StdDraw.setPenColor(0, 0, 0);
+                StdDraw.polygon(polX, polY);
+                
+                
+            }
+            //in.nextLine();
+            
+        }
+       
+
+    }
+    
 }
