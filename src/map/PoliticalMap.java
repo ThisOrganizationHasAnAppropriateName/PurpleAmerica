@@ -18,7 +18,7 @@ public class PoliticalMap {
     public static void main(String[] args) throws Exception {
         
         US testing = new US();
-        testing.drawByState(1960);
+        testing.drawByCounty(1960);
        
     }
 }
