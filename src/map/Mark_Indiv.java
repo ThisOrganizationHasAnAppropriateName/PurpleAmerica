@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ Your Name
+ The Name of the Class
+ A description of all class variables that explains the variable’s purpose and how it is used
+ a brief description of any methods in the class.
+
  */
 package map;
 
@@ -30,11 +32,11 @@ public class Mark_Indiv extends javax.swing.JFrame {
      */
     public Mark_Indiv() {
         initComponents();
-                
+
     }
-    
-          markDraw test = new markDraw();
-        markDraw1 test2 = new markDraw1();
+
+    markDraw test = new markDraw(); //initializes the markDraw library
+    markDraw1 test2 = new markDraw1(); //initializes the markDraw library
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -115,19 +117,12 @@ public class Mark_Indiv extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-      
-
-    
-
         int x = Integer.parseInt((String) Chart1.getSelectedItem());
         int y = Integer.parseInt((String) Chart2.getSelectedItem());
 
         try {
-           test.drawByCounty(x);
-           test2.drawByCounty(y);
-           
-  
-
+            test.drawByCounty(x);
+            test2.drawByCounty(y);
 
         } catch (Exception ex) {
             Logger.getLogger(Mark_Indiv.class.getName()).log(Level.SEVERE, null, ex);

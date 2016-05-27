@@ -9,14 +9,9 @@ package edu.princeton.cs.introcs;
  * to create drawings consisting of points, lines, and curves in a window on
  * your computer and to save the drawings to a file.
  *
- * Todo ---- - Add support for gradient fill, etc. - Fix setCanvasSize() so that
- * it can only be called once. - On some systems, drawing a line (or other
- * shape) that extends way beyond canvas (e.g., to infinity) dimensions does not
- * get drawn.
- *
- * Remarks ------- - don't use AffineTransform for rescaling since it inverts
- * images and strings
- *
+ * An extended copy of the standard draw library that changes the frame size
+ * and also changes the visibility of the frame so that one can open two frames 
+ * at once. 
  *****************************************************************************
  */
 import java.awt.BasicStroke;
@@ -640,7 +635,7 @@ public final class markDraw implements ActionListener, MouseListener, MouseMotio
     }
 
     public void drawByCounty(int year) throws Exception {
-        File file = new File("C:\\Users\\hcps-faragms\\Google Drive\\MyClasses (15-16)\\Programming Hon\\MP4\\PurpleAmerica\\src\\data\\USA-county.txt");
+        File file = new File("src\\data\\USA-county.txt");
         Scanner in = new Scanner(file);
 
         double xmin = in.nextDouble();
@@ -669,10 +664,6 @@ public final class markDraw implements ActionListener, MouseListener, MouseMotio
         String state = "";
         String lastState = "";
         markDraw.setPenRadius(0.001);
-        //File vFile = new File("C:\\PA\\PurpleAmerica\\src\\data\\USA" + year + ".txt");
-        //Scanner vIn = new Scanner(vFile);
-        //Coloring colors = new Coloring();
-        //colors.voteStates(vIn);
 
         while (in.hasNext()) {
             in.nextLine();
@@ -685,7 +676,7 @@ public final class markDraw implements ActionListener, MouseListener, MouseMotio
             if (state.compareTo(lastState) != 0) {
 
                 colors[counter] = new Coloring();
-                File fileState = new File("C:\\Users\\hcps-faragms\\Google Drive\\MyClasses (15-16)\\Programming Hon\\MP4\\PurpleAmerica\\src\\data\\" + state + year + ".txt");
+                File fileState = new File("src\\data\\" + state + year + ".txt");
                 Scanner scanState = new Scanner(fileState);
                 colors[counter].voteStates(scanState);
                 lastState = state;

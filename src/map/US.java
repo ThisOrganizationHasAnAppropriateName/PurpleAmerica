@@ -1,8 +1,12 @@
 /*
-Your Name
-The Name of the Class
-A description of all class variables that explains the variable’s purpose and how it is used
-a brief description of any methods in the class.
+* Team Members: Chen, Mark, Ben
+* Us.java
+* The class first initializes an array of colors that later is used to color each state depending on 
+  the votes going to each candidate. The class uses variables such as the xmin and xmax to store the 
+  canvas size and the coordinates of the map to be created. Variables such as name and state, stores
+  each states name and textual information about each state such as abbreviations. 
+
+* a brief description of any methods in the class.
 
  */
 package map;
@@ -18,7 +22,7 @@ import java.util.Scanner;
  * @author hcps-wangq
  */
 public class US {
-    Coloring[] colors = new Coloring[51];//stores colors
+    Coloring[] colors = new Coloring[51];//stores colors for each state that is later used to fill in each state
 
     public US(){
 
@@ -29,19 +33,19 @@ public class US {
         Scanner in = new Scanner(file);
         
         File outLines = new File("src\\data\\USA.txt");
-        Scanner outLine = new Scanner(outLines);
+        Scanner outLine = new Scanner(outLines); //scans the file for an outline of the map of the US
 
-        double xmin = in.nextDouble();//gets outer bounds
-        double ymin = in.nextDouble();
-        double xmax = in.nextDouble();
-        double ymax = in.nextDouble();
+        double xmin = in.nextDouble(); //x-min coordinate
+        double ymin = in.nextDouble(); //y-min coordinate
+        double xmax = in.nextDouble(); //x-max coordinate
+        double ymax = in.nextDouble(); //y-min coordinate
         int i = in.nextInt();
         
         StdDraw.setCanvasSize(Math.abs((int)((xmax - xmin) * 20 + 20)), (int)((ymax - ymin) * 20 + 20));//sets outer bounds
 
         StdDraw.setXscale(xmin - ((xmax - xmin)/10), xmax + ((xmax - xmin)/10));//sets the scales
         StdDraw.setYscale(ymin - ((ymax - ymin)/10), ymax + ((ymax - ymin)/10));
-
+        
         StdDraw.setPenRadius(0);
 
         in.nextLine();
@@ -161,12 +165,15 @@ public class US {
                 
                 
             }
-            //in.nextLine();
             
         }
 
     }
-    public void drawByStateBlank() throws Exception{//draws the outline only, designed to run after an aforementioned function
+    
+    /*
+    *
+    */
+    public void drawByStateBlank() throws Exception{
         
         File file = new File("src\\data\\USA.txt");
         Scanner in = new Scanner(file);
