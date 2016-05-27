@@ -15,10 +15,10 @@ package map;
 public class PoliticalMap {
 
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {//just a testing class to test the US class
         
-        US testing = new US();
-        testing.drawByCounty(1960);
+        US testing = new US();//makes new US
+        testing.drawByCounty(1960);//draw what need testing
        
     }
 }
