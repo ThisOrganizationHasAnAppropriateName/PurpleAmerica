@@ -247,31 +247,30 @@ public class mapInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Mark_Indiv map = new Mark_Indiv();
-        String[] args = null;
-        Mark_Indiv.main(args);
+        Mark_Indiv map = new Mark_Indiv();//makes a new thing for Mark's funcitonality
+        String[] args = null;//required to run
+        Mark_Indiv.main(args);//runs Mark's functionality
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void genActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genActionPerformed
         US testing = new US();      
-        if(state.isSelected()){
+        if(state.isSelected()){//Checks is radio button for draw by state is selected
             try {
-                testing.drawByState(Integer.parseInt((String) year.getSelectedItem()));
+                testing.drawByState(Integer.parseInt((String) year.getSelectedItem()));//take input from year selector
             } catch (Exception ex) {
                 Logger.getLogger(mapInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if(county.isSelected()){
+        if(county.isSelected()){//Checks is radio button for draw by county is selected
             try {
-                testing.drawByCounty(Integer.parseInt((String) year.getSelectedItem()));
+                testing.drawByCounty(Integer.parseInt((String) year.getSelectedItem()));//take input from year selector
             } catch (Exception ex) {
                 Logger.getLogger(mapInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if(jRadioButton1.isSelected()){
+        if(jRadioButton1.isSelected()){//Checks is radio button for draw one state is selected
             try{
-                
-                testing.drawOneState((String)jComboBox2.getSelectedItem(), Integer.parseInt((String) year.getSelectedItem()));
+                testing.drawOneState((String)jComboBox2.getSelectedItem(), Integer.parseInt((String) year.getSelectedItem()));////take input from year selector and takes input from state selector
                 
             }
             catch(Exception e){
@@ -302,9 +301,9 @@ public class mapInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_countyActionPerformed
 
     private void startBenjaminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startBenjaminActionPerformed
-        Benjamin_Indiv tester = new Benjamin_Indiv();
-        String[] args = null;
-        Benjamin_Indiv.main(args);
+        Benjamin_Indiv tester = new Benjamin_Indiv();//makes a new thing that runs Benjamin's extra functionality
+        String[] args = null;//required to run the extra functionality
+        Benjamin_Indiv.main(args);//runs it
     }//GEN-LAST:event_startBenjaminActionPerformed
 
     /**
