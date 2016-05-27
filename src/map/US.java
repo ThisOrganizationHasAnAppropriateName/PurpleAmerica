@@ -171,11 +171,16 @@ public class US {
         File file = new File("src\\data\\USA.txt");
         Scanner in = new Scanner(file);
 
+        double xmin = in.nextDouble();//gets bounds
+        double ymin = in.nextDouble();
+        double xmax = in.nextDouble();
+        double ymax = in.nextDouble();
+        int i = in.nextInt();
+        
         double[] polX = new double[10];
         double[] polY = new double[10];
         
         StdDraw.setPenRadius(0.003);
-                
         for (int x = 0; x <= 208; x++) {
             
             String name = in.nextLine();//gets name
