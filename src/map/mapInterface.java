@@ -249,14 +249,25 @@ public class mapInterface extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(mapInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
-       }
+        }
         if(county.isSelected()){
             try {
                 testing.drawByCounty(Integer.parseInt((String) year.getSelectedItem()));
             } catch (Exception ex) {
                 Logger.getLogger(mapInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
-       }
+        }
+        if(jRadioButton1.isSelected()){
+            try{
+                
+                testing.drawOneState((String)jComboBox2.getSelectedItem(), Integer.parseInt((String) year.getSelectedItem()));
+                
+            }
+            catch(Exception e){
+                
+            }
+        }
+
     }//GEN-LAST:event_genActionPerformed
 
     private void yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearActionPerformed
