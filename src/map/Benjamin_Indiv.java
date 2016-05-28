@@ -1,10 +1,4 @@
-/*
-Your Name
-The Name of the Class
-A description of all class variables that explains the variable’s purpose and how it is used
-a brief description of any methods in the class.
 
- */
 package map;
 
 import edu.princeton.cs.introcs.markDraw;

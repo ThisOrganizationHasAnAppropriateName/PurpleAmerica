@@ -1,9 +1,10 @@
 /*
 * Team Members: Ben, Chen, Mark
 * Coloring.jav
-* A description of all class variables that explains the variable’s purpose and how it is used
-*a brief description of any methods in the class.
-
+* The coloring class uses HashMap which store colors by certain names. Then the the voteStates method 
+takes in the file to be scanned and splits the data in order to get the votes for each candidate which 
+is running. Using the algorithm presented in the project, all the votes are added into a sum and then are
+mulitplied by 255 to form the purple color and are finally outputted as a certain color to be used on the map.
  */
 package map;
 

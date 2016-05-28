@@ -6,21 +6,13 @@
  * The created program fuctions as a map generator and data formater which takes
 the given data about certain states and plots out such data to draw out a map
 which showcases either the state, the country by state, or the country by county. 
-The program also takes in voter elections and turns the 
-
- * The complex algorithm used to run the program is made up of various
- if conditionals, for and while loops, and user inputs. Each input the user 
- enters is checked for standards such as being a single character or not 
- having any extra characters besides letters. Once the letter is checked it 
- goes through a for loop which compares the inputted letter to each letter in 
- word chosen by the user. If the letter is a match it is printed, if the letter
- is not a match the amount of user lives is decreased and a body part of a hangman
- is printed.
- * I believe I could have improved the program by applying more modularization and
- more creativity in terms of added functionality. 
- * Added Features: Letters previously inputted by user and space between blanks showing
- the amount of characters within the word. 
- * @version 1.00 2015/11/16
+The program also takes in voter elections and outputs a certain shade of purple to demonstrate
+the  popularity of a certain voter in a county or state.
+* The class uses predifined items in the design section of a gui, and through action events, the program
+runs the defined method to draw the maps by calling the draw methods in the US class.
+* Things we could have done better: If there was more time we could have added more functionality and allowed
+the user to reset the frame, instead of restarting the program. 
+ * 
  */
 package map;
 import edu.princeton.cs.introcs.markDraw;
