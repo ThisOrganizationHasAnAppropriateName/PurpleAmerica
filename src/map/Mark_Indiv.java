@@ -1,8 +1,14 @@
 /*
- Your Name
- The Name of the Class
- A description of all class variables that explains the variable’s purpose and how it is used
- a brief description of any methods in the class.
+ * Mark Farag
+ * Mark_Indiv
+ * The classes only intializes the markDraw libraries with their intended methods especially focused on 
+    the drawByCounty method and the jframes sepcialized within each library. The class also uses gui
+    design to implment a reset button, as well as a map generate button which activates the map generation. 
+ * The drawByCounty method takes in a specified county and draws the United States by county at a specified 
+    year. The drawByCounty method takes in the first four numbers in the USA-county.txt and creates certain
+    coordinates out of them. Such coordinates only act as the canvas size and boundaries, then the method uses
+    standard library methods such as the polygon draw to create the shape of the United States, then the coloring 
+    class to fill in each map. 
 
  */
 package map;
@@ -36,7 +42,7 @@ public class Mark_Indiv extends javax.swing.JFrame {
     }
 
     markDraw test = new markDraw(); //initializes the markDraw library
-    markDraw1 test2 = new markDraw1(); //initializes the markDraw library
+    markDraw1 test2 = new markDraw1(); //initializes the markDraw1 library
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -117,12 +123,12 @@ public class Mark_Indiv extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        int x = Integer.parseInt((String) Chart1.getSelectedItem());
-        int y = Integer.parseInt((String) Chart2.getSelectedItem());
+        int x = Integer.parseInt((String) Chart1.getSelectedItem()); //Collects the year for the map on the right
+        int y = Integer.parseInt((String) Chart2.getSelectedItem()); //Collects the year for the map on the left
 
-        try {
-            test.drawByCounty(x);
-            test2.drawByCounty(y);
+        try { 
+            test.drawByCounty(x); // uses the markDraw library, especially the drawByCounty to draw frame1
+            test2.drawByCounty(y); // uses the markDraw1 library, especially the drawByCounty to draw frame2
 
         } catch (Exception ex) {
             Logger.getLogger(Mark_Indiv.class.getName()).log(Level.SEVERE, null, ex);
@@ -139,8 +145,8 @@ public class Mark_Indiv extends javax.swing.JFrame {
     }//GEN-LAST:event_Chart2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        markDraw.remove();
-        markDraw1.remove();
+        markDraw.remove(); //removes all the working frames from map1
+        markDraw1.remove(); //removes all the working frames from map2
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
