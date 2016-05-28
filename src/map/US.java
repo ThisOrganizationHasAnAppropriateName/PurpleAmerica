@@ -6,7 +6,22 @@
   canvas size and the coordinates of the map to be created. Variables such as name and state, stores
   each states name and textual information about each state such as abbreviations. 
 
-* a brief description of any methods in the class.
+* The drawByCounty method takes in a certain year as a parameter then searches for such year in the given 
+data. After pulling the data the method scans the first four lines which act as the numbers which set the 
+bounds for the map in x and y directions. Then using the implemented classes in the stdDraw library, the 
+program sets such bounds then using a while loop the program takes in the name and points in all the inputed 
+states. After using the stdDraw methods to draw the outline of the US map especially the stdDraw.filled polygon method
+the United States outline is complete. Then the color class is implemented which averages the votes in every state 
+then determines the set color for each state which fills the color for the set state. 
+
+* The drawByState method does the same as the drawByCounty method, however, instead of outlining the counties, it
+only outlines the states and then implements the color class. 
+
+* The drawByStateblank method is used mcuh like the drawByState method in the drawByCounty method to create an 
+outline of the states over the map of the counties. 
+
+*the drawOneState method implements the same techniques as teh drawByState, yet changes the canvas size
+and outlines to draw out only one state at a time. 
 
  */
 package map;
@@ -110,12 +125,12 @@ public class US {
     public void drawByState(int year) throws Exception{
         
         File file = new File("src\\data\\USA.txt");
-        Scanner in = new Scanner(file);
+        Scanner in = new Scanner(file); // places the file path into a scanner
 
-        double xmin = in.nextDouble();//gets bounds
-        double ymin = in.nextDouble();
-        double xmax = in.nextDouble();
-        double ymax = in.nextDouble();
+        double xmin = in.nextDouble();//gets min x bound
+        double ymin = in.nextDouble(); //gets min y bound
+        double xmax = in.nextDouble(); //gets max x bound
+        double ymax = in.nextDouble(); //gets max y bound 
         int i = in.nextInt();
         
         StdDraw.setCanvasSize(Math.abs((int)((xmax - xmin) * 20 + 20)), (int)((ymax - ymin) * 20 + 20));//set bounds
@@ -123,7 +138,7 @@ public class US {
         StdDraw.setXscale(xmin - ((xmax - xmin)/10), xmax + ((xmax - xmin)/10));//sets scales
         StdDraw.setYscale(ymin - ((ymax - ymin)/10), ymax + ((ymax - ymin)/10));
 
-        double[] polX = new double[10];//makes arrays to hold points
+        double[] polX = new double[10];//makes arrays to hold points that are later used to plot map
         double[] polY = new double[10];
         
         
@@ -144,7 +159,7 @@ public class US {
                 polX = new double[iter];//sets arrays to correct length
                 polY = new double[iter];
                 for (int z = 0; z < iter; z++) { // goes through and get one set of points
-                    polX[z] = in.nextDouble();
+                    polX[z] = in.nextDouble(); //places the points into an array
                     polY[z] = in.nextDouble();
                 }
                 
@@ -259,8 +274,6 @@ public class US {
                     StdDraw.setPenColor(new Color(0,0,0));//sets to black
                     
                 }
-                
-                    
                 
                 StdDraw.filledPolygon(polX, polY);//draw in color
                 StdDraw.setPenColor(0, 0, 0);//color == black
